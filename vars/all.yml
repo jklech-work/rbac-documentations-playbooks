@@ -2,14 +2,19 @@ aap_hostname: "https://3.87.222.251"
 aap_username: "admin"
 aap_validate_certs: false
 aap_request_timeout: 60
-aap_password: "Admin!Password!Gw"
+aap_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30326432636433393036633137613266386237653432353937303437303130353537633931343263
+          3631663562316139366436363566353636353461333935650a373161333334356130653531326436
+          32346232386130323362623932393561373736633964376639373338333338376336303137313436
+          3836643736636663360a646563346532613266303264383239363138353739353538393236343039
+          33623966613933353930336263366638626665386434323431396434393431303865
 
-
-org_name: "Demo-Org"
+org_name: "Demo-Organization"
 team_name: "Demo-Team"
-user_username: "demo.user"
+user_username: "Demo-User"
 user_email: "demo.user@example.com"
-user_password: "Passw0rd!Demo"
+user_password: "3ncrypt3d_P@$$word"
 
 # Role names as they exist in your platform
 role_for_team_in_org: "Organization Inventory Admin"  # "Executor"
