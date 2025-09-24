@@ -1,11 +1,11 @@
 ---
-- name: Ensure organization exists
+- name: Create Organization
   hosts: localhost
   gather_facts: false
   vars_files:
     - ./vars/all.yml
   tasks:
-    - name: Organization present
+    - name: Ensure new Organization exists
       ansible.platform.organization:
         name: "{{ org_name }}"
         state: present
@@ -14,13 +14,13 @@
         aap_password: "{{ aap_password }}"
         aap_validate_certs: "{{ aap_validate_certs }}"
 
-- name: Ensure team exists in org
+- name: Create Team
   hosts: localhost
   gather_facts: false
   vars_files:
     - ./vars/all.yml
   tasks:
-    - name: Team present
+    - name: Ensure new Team exists in Organization
       ansible.platform.team:
         name: "{{ team_name }}"
         organization: "{{ org_name }}"
@@ -30,13 +30,13 @@
         aap_password: "{{ aap_password }}"
         aap_validate_certs: "{{ aap_validate_certs }}"
 
-- name: Ensure user exists
+- name: Create User
   hosts: localhost
   gather_facts: false
   vars_files:
     - ./vars/all.yml
   tasks:
-    - name: User present
+    - name: Ensure new User exists
       ansible.platform.user:
         username: "{{ user_username }}"
         email: "{{ user_email }}"
@@ -47,13 +47,13 @@
         aap_password: "{{ aap_password }}"
         aap_validate_certs: "{{ aap_validate_certs }}"
 
-- name: Ensure custom role definition exists 
+- name: Create custom Role
   hosts: localhost
   gather_facts: false
   vars_files:
     - ./vars/all.yml
   tasks:
-    - name: Custom role present
+    - name: Ensure new custom Role exists
       ansible.platform.role_definition:
         name: "{{ custom_role_name }}"
         description: "{{ custom_role_description }}"
@@ -67,13 +67,13 @@
         aap_password: "{{ aap_password }}"
         aap_validate_certs: "{{ aap_validate_certs }}"
 
-- name: Assign role to team in org
+- name: Team gets Role
   hosts: localhost
   gather_facts: false
   vars_files:
     - ./vars/all.yml
   tasks:
-    - name: Team gets role in org
+    - name: Assign already existing Role to Team in Organization
       ansible.platform.role_team_assignment:
         team: "{{ team_name }}"
         assignment_objects:
@@ -86,13 +86,13 @@
         aap_password: "{{ aap_password }}"
         aap_validate_certs: "{{ aap_validate_certs }}"
 
-- name: Assign role to user in org
+- name: User gets Role
   hosts: localhost
   gather_facts: false
   vars_files:
     - ./vars/all.yml
   tasks:
-    - name: User gets org role
+    - name: Assign already existing Role to User in Organization
       ansible.platform.role_user_assignment:
         user: "{{ user_username }}"
         object_ids:
