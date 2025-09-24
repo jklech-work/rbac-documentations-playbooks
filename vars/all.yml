@@ -1,3 +1,4 @@
+# AAP related variables
 aap_hostname: "https://54.89.79.208"
 aap_username: "admin"
 aap_validate_certs: false
@@ -10,17 +11,18 @@ aap_password: !vault |
           3363636462646534330a616437646665393738386235306361653333313338656563346633396434
           35346164656437326231326433323934643133353436323562373762616531326463
 
+# Details for creating Organization, Team, and User
 org_name: "Demo-Organization"
 team_name: "Demo-Team"
 user_username: "Demo-User"
 user_email: "demo.user@example.com"
 user_password: "3ncrypt3d_P@$$word"
 
-# Role names as they exist in your platform
+# Role names as they exist in your AAP
 role_for_team_in_org: "Organization Inventory Admin"  # "Executor"
 role_for_user_in_org: "Organization Auditor"
 role_for_user_in_team: "Auditor"        # if your platform supports team-scoped roles
 
-# Optional: a custom role definition you want to create
+# Custom Role definition you want to create
 custom_role_name: "NetOps ReadOnly"
 custom_role_description: "Read-only access to network objects"
